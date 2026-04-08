@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { store } from "@/lib/mock-store";
-import { nanoid } from "nanoid";
+
 
 export async function POST(
   _request: NextRequest,
@@ -31,7 +31,7 @@ export async function POST(
     });
   }
 
-  const token = nanoid(12);
+  const token = Math.random().toString(36).slice(2, 14);
   const link = {
     id: store.genId("sl"),
     wishlist_id: id,
